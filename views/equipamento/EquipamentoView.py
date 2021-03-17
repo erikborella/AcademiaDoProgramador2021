@@ -40,7 +40,7 @@ def registrar():
             db.session.add(equipamento)
             db.session.commit()
         except:
-            flash("Não foi possivel registrar esse equipamento, um erro occoreu")
+            flash("Não foi possivel registrar esse equipamento, um erro occoreu!")
             return redirect(url_for('equipamento.registrar'))
 
         return redirect(url_for('equipamento.index'))
@@ -71,10 +71,27 @@ def editar(id):
             db.session.add(equipamento)
             db.session.commit()
         except:
-            flash("Não foi possivel editar esse equipamento, um erro occoreu")
+            flash("Não foi possivel editar esse equipamento, um erro occoreu!")
             return redirect(url_for('equipamento.editar', id=id))
 
         return redirect(url_for('equipamento.index'))
         
     else:
         return render_template('editarEquipamento.html', equipamento=equipamento, form=form)
+
+
+@EquipamentoView.route('/excluir/<int:id>', methods=['GET'])
+def excluir(id):
+    equipamento:Equipamento = Equipamento.query.filter(Equipamento.id == id).first()
+
+    if (equipamento is None):
+        flash("Equipamento com o id: %r não foi encontrado" % id) 
+        return redirect(url_for('equipamento.index'))
+
+    try:
+        db.session.delete(equipamento)
+        db.session.commit()
+    except:
+        flash("Não foi possivel excluir esse equipamento, um erro occoreu!")
+
+    return redirect(url_for('equipamento.index'))

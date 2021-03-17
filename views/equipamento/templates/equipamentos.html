@@ -14,6 +14,18 @@
         </a>
     </div>
 
+    {% if not equipamentos %}
+        <div class="center-align">
+            <div class="col s12 m6 offset-m3" style="padding-top: 30px;">
+                <div class="card red darken-2">
+                    <div class="card-content white-text">
+                        <span class="card-title">Cadastre um novo equipamento apertando no botão abaixo!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
     <div class="row" style="padding-top: 10px;">
         {% for equipamento in equipamentos %}
             <div class="col s12 m6">
@@ -27,7 +39,7 @@
                     </div>
                     <div class="card-action">
                     <a href="{{ url_for('equipamento.editar', id=equipamento.id) }}" >Editar</a>
-                    <a href="#" class="red-text">Excluir</a>
+                    <a href="{{ url_for('equipamento.excluir', id=equipamento.id) }}" class="red-text">Excluir</a>
                     </div>
                 </div>
             </div>
