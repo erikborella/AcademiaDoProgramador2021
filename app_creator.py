@@ -1,5 +1,7 @@
 from flask import Flask
 
+from views.equipamento.EquipamentoView import EquipamentoView
+
 from extensions import db
 
 """
@@ -17,7 +19,7 @@ def create_app():
 
 # Registra as telas
 def register_blueprint(app: Flask):
-    pass
+    app.register_blueprint(EquipamentoView, url_prefix="/equipamentos")
 
 # Registra as dependencias
 def register_extensions(app):
