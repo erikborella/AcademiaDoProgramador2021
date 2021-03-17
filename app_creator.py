@@ -14,5 +14,5 @@ def create_app():
 def register_blueprint(app: Flask):
     pass
 
-def register_extensions(app: Flask):
-    pass
+def register_extensions(app):
+    db.init_app(app)
