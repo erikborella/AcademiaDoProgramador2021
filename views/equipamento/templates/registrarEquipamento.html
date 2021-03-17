@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}
-    Registrar Equipamento
-{% endblock %}
-
 {% block content %}
 
     <h3 class="center-align">Registrar Equipamento</h3>
@@ -28,7 +24,7 @@
                     <label for="numeroDeSerie">Numero De Serie</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Data De Fabricação" name="dataDeFabricacao" id="dataDeFabricacao" class="datepicker" required>
+                    <input placeholder="Data De Fabricação" name="dataDeFabricacao" id="dataDeFabricacao" class="datepicker" onfocus="openDatePicker()" required>
                 </div>
             </div>
 
@@ -50,5 +46,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/views/equipamento/registrarEquipamento.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/views/equipamento/equipamento.js') }}"></script>
 {% endblock %}

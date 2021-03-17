@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}
-    Editar Equipamento
-{% endblock %}
-
 {% block content %}
 
     <h3 class="center-align">Editar Equipamento</h3>
@@ -27,7 +23,7 @@
                     <label for="numeroDeSerie">Numero De Serie</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Data De Fabricação" name="dataDeFabricacao" id="dataDeFabricacao" class="datepicker" required value="{{ equipamento.dataFabricacao.strftime('%d/%m/%Y') }}">
+                    <input placeholder="Data De Fabricação" name="dataDeFabricacao" id="dataDeFabricacao" class="datepicker" onfocus="openDatePicker()" required value="{{ equipamento.dataFabricacao.strftime('%d/%m/%Y') }}">
                 </div>
             </div>
 
@@ -49,5 +45,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/views/equipamento/registrarEquipamento.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/views/equipamento/equipamento.js') }}"></script>
 {% endblock %}
