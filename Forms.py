@@ -9,3 +9,12 @@ class EquipamentoForm(FlaskForm):
     numeroDeSerie = StringField('numeroDeSerie', validators=[DataRequired()])
     dataDeFabricacao = StringField('dataDeFabricacao', validators=[DataRequired()])
     fabricante = StringField('fabricante', validators=[DataRequired()])
+
+
+class ChamadoForm(FlaskForm):
+
+    titulo = StringField('titulo', validators=[DataRequired()])
+    descricao = StringField('descricao', validators=[DataRequired()])
+    equipamento_id = IntegerField('equipamento_id', validators=[DataRequired()])
+    dataDeAbertura = StringField('dataDeAbertura', validators=[DataRequired()])
+    

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3 class="center-align">Registrar Chamado</h3>
+
+    {% if not equipamentos %}
+
+        <div class="center-align">
+            <div class="col s12 m6 offset-m3" style="padding-top: 30px;">
+                <div class="card red darken-2">
+                    <div class="card-content white-text">
+                        <span class="card-title">Você precisa ter um equipamento registrado para poder registrar uma chamada!</span>
+                        <br>
+                        <span class="card-title">Registre <a href="{{ url_for('equipamento.registrar') }}" target="_blank">aqui!</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        
+        <div class="row">
+            <form action="{{ url_for('chamado.registrar') }}" method="post" class="col s12">
+                {{ form.csrf_token }}
+
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <input id="titulo" name="titulo" type="text" required>
+                        <label for="nome">Titulo do Chamado</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <select name="equipamento_id" id="equipamento_id" required>
+                            {% for equipamento in equipamentos %}
+                                <option value="{{ equipamento.id }}">{{ equipamento.nome }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="equipamento_id">Selecione o equipamento</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <input placeholder="Data De Abertura" name="dataDeAbertura" id="dataDeAbertura" class="datepicker" onfocus="openDatePicker()" required>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <textarea id="descricao" name="descricao" class="materialize-textarea"></textarea>
+                        <label for="descricao">Decrição</label>
+                    </div>
+                </div>
+
+                <div class="row center-align">    
+                    <button class="btn waves-effect waves-light black" type="submit">Registrar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/views/chamado/chamado.js') }}"></script>
+{% endblock %}
