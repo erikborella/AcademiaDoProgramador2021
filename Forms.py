@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField
+from wtforms import StringField, FloatField, IntegerField
 from wtforms.validators import DataRequired, Length
 
-class RegistrarEquipamentoForm(FlaskForm):
+class EquipamentoForm(FlaskForm):
 
     nome = StringField('nome', validators=[DataRequired(), Length(min=6)])
     preco = FloatField('preco', validators=[DataRequired()])
