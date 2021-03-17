@@ -7,7 +7,7 @@ from extensions import db
 from sqlalchemy import create_engine
 
 """ Importe todos os modelos aqui para fazer a migração """
-from models import Equipamento, ChamadaManutencao
+from models import Equipamento, ChamadoManutencao
 
 
 """ Decorator para ser usado fora do serviço do Flask """

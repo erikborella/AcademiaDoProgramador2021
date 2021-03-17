@@ -27,7 +27,7 @@ class Equipamento(db.Model):
         return "<Equipamento: %r:%r>" % (self.nome, self.precoAquisisao)
 
 # Modelo das chamadas de manutenção
-class ChamadaManutencao(db.Model):
+class ChamadoManutencao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     titulo = db.Column(db.String(100), nullable=False)
