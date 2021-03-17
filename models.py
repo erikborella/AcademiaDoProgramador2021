@@ -8,14 +8,15 @@ Aqui definimos como as tabelas do banco de dados serão
 
 # Modelo dos equipamentos
 class Equipamento(db.Model):
-    numeroDeSerie = db.Column(db.String(100), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
 
     nome = db.Column(db.String(100), nullable=False)
+    numeroDeSerie = db.Column(db.String(100), nullable=False)
     precoAquisisao = db.Column(db.Float, nullable=False)
     dataFabricacao = db.Column(db.Date, nullable=False)
     fabricante = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, numeroDeSerie: str, nome: str, precoAquisisao: float, dataFabricacao: date, fabricante: str):
+    def __init__(self, nome: str, numeroDeSerie: str, precoAquisisao: float, dataFabricacao: date, fabricante: str):
         self.nome = nome
         self.numeroDeSerie = numeroDeSerie
         self.precoAquisisao = precoAquisisao
@@ -32,7 +33,7 @@ class ChamadaManutencao(db.Model):
     titulo = db.Column(db.String(100), nullable=False)
     descricao = db.Column(db.String(500), nullable=False)
 
-    equipamento_numeroDeSerie = db.Column(db.String(100), db.ForeignKey('equipamento.numeroDeSerie'), nullable=False)
+    equipamento_id = db.Column(db.String(100), db.ForeignKey('equipamento.id'), nullable=False)
     equipamento = db.relationship('Equipamento', backref=db.backref('chamadas', lazy=True))
 
     dataDeAbertura = db.Column(db.Date, nullable=False)
