@@ -8,6 +8,7 @@ from models import Equipamento
 from datetime import date
 
 EquipamentoView = Blueprint('equipamento', __name__, template_folder='templates')
+titulo = "Equipamento"
 
 def getDate(dataStr: str) -> date:
     datasSeparadas = dataStr.split('/')
@@ -20,7 +21,7 @@ def getDate(dataStr: str) -> date:
 @EquipamentoView.route('/')
 def index():
     equipamentos = Equipamento.query.all()
-    return render_template('equipamentos.html', equipamentos=equipamentos)
+    return render_template('equipamentos.html', equipamentos=equipamentos, titulo=titulo)
 
 
 @EquipamentoView.route('/registrar', methods=['GET', 'POST'])
@@ -46,7 +47,7 @@ def registrar():
         return redirect(url_for('equipamento.index'))
 
     else:
-        return render_template('registrarEquipamento.html', form=form)
+        return render_template('registrarEquipamento.html', form=form, titulo=titulo)
 
 
 @EquipamentoView.route('/editar/<int:id>', methods=['GET', 'POST'])
@@ -77,7 +78,7 @@ def editar(id):
         return redirect(url_for('equipamento.index'))
         
     else:
-        return render_template('editarEquipamento.html', equipamento=equipamento, form=form)
+        return render_template('editarEquipamento.html', equipamento=equipamento, form=form, titulo=titulo)
 
 
 @EquipamentoView.route('/excluir/<int:id>', methods=['GET'])

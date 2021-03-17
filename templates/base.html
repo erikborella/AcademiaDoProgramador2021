@@ -4,14 +4,14 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title></title>
+      <title>{{ titulo }}</title>
     </head>
 
     <body>
 
       <nav>
         <div class="nav-wrapper black">
-          <a href="#" class="brand-logo">{% block title %}{% endblock %}</a>
+          <a href="#" class="brand-logo">{{ titulo }}</a>
         </div>
       </nav>
 
