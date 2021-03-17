@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Equipamentos
+{% endblock %}
+
+{% block content %}
+
+    <h3 class="center-align">Equipamentos</h3>
+    
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light black" href="{{ url_for('equipamento.registrar') }}">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+
+    <div class="row" style="padding-top: 10px;">
+        {% for equipamento in equipamentos %}
+            <div class="col s12 m6">
+                <div class="card black darken-3">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{ equipamento.nome }}:</span>
+                        <ul>
+                            <li>Numero de serie: {{ equipamento.numeroDeSerie }}</li>
+                            <li>Fabricante: {{ equipamento.fabricante }}</li>
+                        </ul>
+                    </div>
+                    <div class="card-action">
+                    <a href="{{ url_for('equipamento.editar', id=equipamento.id) }}" >Editar</a>
+                    <a href="#" class="red-text">Excluir</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -17,6 +17,11 @@ def getDate(dataStr: str) -> date:
         int(datasSeparadas[0])
         )
 
+@EquipamentoView.route('/')
+def index():
+    equipamentos = Equipamento.query.all()
+    return render_template('equipamentos.html', equipamentos=equipamentos)
+
 @EquipamentoView.route('/registrar', methods=['GET', 'POST'])
 def registrar():
     form = RegistrarEquipamentoForm()
@@ -38,8 +43,14 @@ def registrar():
                 flash("Não foi possivel registrar esse equipamento, um erro occoreu")
                 return redirect(url_for('equipamento.registrar'))
 
-            return "a"
+            return redirect(url_for('equipamento.index'))
 
 
     else:
         return render_template('registrarEquipamento.html', form=form)
+
+@EquipamentoView.route('/editar/<int:id>', methods=['GET', 'POST'])
+def editar(id):
+
+    if request.method == 'GET':
+        return str(id)
