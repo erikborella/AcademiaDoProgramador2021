@@ -1,8 +1,12 @@
-
 from extensions import db
 
 from datetime import date
 
+"""
+Aqui definimos como as tabelas do banco de dados serão
+"""
+
+# Modelo dos equipamentos
 class Equipamento(db.Model):
     numeroDeSerie = db.Column(db.String(100), primary_key=True)
 
@@ -21,7 +25,7 @@ class Equipamento(db.Model):
     def __repr__(self):
         return "<Equipamento: %r:%r>" % (self.nome, self.precoAquisisao)
 
-
+# Modelo das chamadas de manutenção
 class ChamadaManutencao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
