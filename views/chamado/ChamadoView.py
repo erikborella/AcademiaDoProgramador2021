@@ -8,7 +8,7 @@ from models import Equipamento, ChamadoManutencao
 from extensions import db
 
 ChamadoView = Blueprint('chamado', __name__, template_folder='templates')
-titulo = "Chamados de Manutenção"
+titulo = "Manutenções"
 
 # Recebe uma string no formato dd/mm/yyyy e retorna um objeto date com a data
 def getDate(dataStr: str) -> date:
