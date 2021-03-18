@@ -10,6 +10,9 @@ const done = "Ok";
 
 // Inicialiação do dataPicker
 document.addEventListener('DOMContentLoaded', function() {
+    let modals = document.querySelectorAll('.modal');
+    M.Modal.init(modals);
+
     let elems = document.querySelectorAll('.datepicker');
     let instances = M.Datepicker.init(elems, 
         {

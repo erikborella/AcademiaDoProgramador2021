@@ -7,6 +7,8 @@ from models import Equipamento
 
 from datetime import date
 
+from utils import calcular_diferença_dias_data_atual
+
 # Declaração do Blueprint e do seu titulo
 EquipamentoView = Blueprint('equipamento', __name__, template_folder='templates')
 titulo = "Equipamento"
@@ -24,6 +26,11 @@ def getDate(dataStr: str) -> date:
 @EquipamentoView.route('/')
 def index():
     equipamentos = Equipamento.query.all()
+    
+    for equipamento in equipamentos:
+        for chamado in equipamento.chamados:
+            chamado.diasAberto = calcular_diferença_dias_data_atual(chamado.dataDeAbertura)
+
     return render_template('equipamentos.html', equipamentos=equipamentos, titulo=titulo)
 
 

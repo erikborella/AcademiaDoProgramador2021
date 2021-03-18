@@ -30,7 +30,18 @@
                         <span class="card-title">{{ equipamento.nome }}:</span>
                         <ul>
                             <li>Numero de serie: {{ equipamento.numeroDeSerie }}</li>
+                            <li>Preço de Aquisição: {{ equipamento.precoAquisisao }}$</li>
+                            <li>Data de Fabricação: {{ equipamento.dataFabricacao.strftime("%d/%m/%Y") }}</li>
                             <li>Fabricante: {{ equipamento.fabricante }}</li>
+                            {% if equipamento.chamados %} 
+                                <br>
+                                <li>Chamados de manutenção:</li>
+                                <ol>
+                                    {% for chamado in equipamento.chamados %}
+                                    <li><a class="modal-trigger" href="#modal{{ equipamento.id }}-{{chamado.id}}">{{ chamado.titulo }}</a></li>
+                                    {% endfor %}
+                                </ol>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="card-action">
@@ -42,4 +53,32 @@
         {% endfor %}
     </div>
 
+    {% for equipamento in equipamentos %}
+        {% for chamado in equipamento.chamados %}
+            <div id="modal{{ equipamento.id }}-{{ chamado.id }}" class="modal">
+            <div class="modal-content">
+                <h4>Chamado: {{ chamado.titulo }}</h4>
+                <p>Equipamento: {{ equipamento.nome }}</p>
+                <p>Data de Abertura: {{ chamado.dataDeAbertura.strftime('%d/%m/%Y') }}</p>
+                <p>Aberto há: {{ chamado.diasAberto }} dias</p>
+                <div class="divider"></div>
+                <p><strong>Decrição:</strong></p>
+                <p class="truncate">
+                    {% autoescape false %} 
+                        {{ chamado.descricao | replace('\n', '<br>') }} 
+                    {% endautoescape %}
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="{{ url_for('chamado.editar', id=chamado.id) }}" class="left red-text waves-effect waves-green btn-flat">Editar Chamado</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/views/equipamento/equipamento.js') }}"></script>
 {% endblock %}
