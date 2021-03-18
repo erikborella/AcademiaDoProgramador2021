@@ -14,9 +14,10 @@
 
           {% if titulo == 'Equipamento' %}
             <a href="{{ url_for('equipamento.index') }}" class="brand-logo truncate">{{ titulo }}</a>
-          {% endif %}
-          {% if titulo == 'Manutenções' %}
+          {% elif titulo == 'Manutenções' %}
             <a href="{{ url_for('chamado.index') }}" class="brand-logo truncate">{{ titulo }}</a>
+          {% else %}
+            <a href="" class="">{{ titulo }}</a>
           {% endif %}
 
           <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
