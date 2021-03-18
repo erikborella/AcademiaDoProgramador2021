@@ -30,8 +30,8 @@
                     <span class="card-title">{{ chamado.titulo }}:</span>
                     <ul>
                         <li>Equipamento: <a class="modal-trigger" href="#modal{{ chamado.id }}">{{ chamado.equipamento.nome }}</a></li>
-                        <li>Data de Abertura: {{ chamado.dataDeAbertura.strftime('%d/%m/%Y') }}</li>
-                        <li>Aberto há: {{ chamado.diasAberto }} dias</li>
+                        <li>Data de Abertura: {{ chamado.data_de_abertura.strftime('%d/%m/%Y') }}</li>
+                        <li>Aberto há: {{ chamado.dias_aberto }} dias</li>
                         <br>
                         <li><strong>Decrição:</strong></li>
                         <li class="truncate">
@@ -55,9 +55,9 @@
             <div class="modal-content">
                 <h4>Equipamento do chamado: {{ chamado.titulo }}</h4>
                 <p>Nome: {{ chamado.equipamento.nome }}</p>
-                <p>Numero de Serie: {{ chamado.equipamento.numeroDeSerie }}</p>
-                <p>Preço de Aquisição: {{ chamado.equipamento.precoAquisisao }}$</p>
-                <p>Data De Fabricação: {{ chamado.equipamento.dataFabricacao.strftime('%d/%m/%Y') }}</p>
+                <p>Numero de Serie: {{ chamado.equipamento.numero_de_serie }}</p>
+                <p>Preço de Aquisição: {{ chamado.equipamento.preco_aquisisao }}$</p>
+                <p>Data De Fabricação: {{ chamado.equipamento.data_fabricacao.strftime('%d/%m/%Y') }}</p>
                 <p>Fabricante: {{ chamado.equipamento.fabricante }}</p>
             </div>
             <div class="modal-footer">

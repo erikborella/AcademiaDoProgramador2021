@@ -15,8 +15,8 @@ class EquipamentoForm(FlaskForm):
 
     nome = StringField('nome', validators=[DataRequired(), Length(min=6)])
     preco = FloatField('preco', validators=[DataRequired()])
-    numeroDeSerie = StringField('numeroDeSerie', validators=[DataRequired()])
-    dataDeFabricacao = StringField('dataDeFabricacao', validators=[DataRequired()])
+    numero_de_serie = StringField('numero_de_eerie', validators=[DataRequired()])
+    data_de_fabricacao = StringField('data_de_fabricacao', validators=[DataRequired()])
     fabricante = StringField('fabricante', validators=[DataRequired()])
 
 
@@ -28,5 +28,5 @@ class ChamadoForm(FlaskForm):
     titulo = StringField('titulo', validators=[DataRequired()])
     descricao = StringField('descricao', validators=[DataRequired()])
     equipamento_id = IntegerField('equipamento_id', validators=[DataRequired()])
-    dataDeAbertura = StringField('dataDeAbertura', validators=[DataRequired()])
+    data_de_abertura = StringField('data_de_abertura', validators=[DataRequired()])
     

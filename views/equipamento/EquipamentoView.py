@@ -14,7 +14,9 @@ EquipamentoView = Blueprint('equipamento', __name__, template_folder='templates'
 titulo = "Equipamento"
 
 
-# Pagina inicial
+"""
+    Pagina inicial
+""" 
 @EquipamentoView.route('/')
 def index():
     equipamentos = Equipamento.query.all()
@@ -22,12 +24,14 @@ def index():
     # Calcula há quantos dias os chamados de cada equipamento estão abertos
     for equipamento in equipamentos:
         for chamado in equipamento.chamados:
-            chamado.diasAberto = calcular_diferença_dias_data_atual(chamado.dataDeAbertura)
+            chamado.dias_aberto = calcular_diferença_dias_data_atual(chamado.data_de_abertura)
 
     return render_template('equipamentos.html', equipamentos=equipamentos, titulo=titulo)
 
 
-# Pagina para registrar novos equipamentos
+"""
+    Pagina para registrar novos equipamentos
+"""
 @EquipamentoView.route('/registrar', methods=['GET', 'POST'])
 def registrar():
 
@@ -40,9 +44,9 @@ def registrar():
         # Declara o equipamento
         equipamento = Equipamento(
             form.nome.data,
-            form.numeroDeSerie.data,
+            form.numero_de_serie.data,
             form.preco.data,
-            converter_data_str_para_date(form.dataDeFabricacao.data),
+            converter_data_str_para_date(form.data_de_fabricacao.data),
             form.fabricante.data
         )
 
@@ -59,11 +63,14 @@ def registrar():
         return redirect(url_for('equipamento.index'))
 
     else:
+        print(form.errors)
         # Renderiza a pagina para registro
         return render_template('registrarEquipamento.html', form=form, titulo=titulo)
 
 
-# Pagina para editar um equipamento
+"""
+    Pagina para editar um equipamento
+"""
 @EquipamentoView.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar(id):
     # Procura pelo equipamento com a id passada na URL
@@ -82,9 +89,9 @@ def editar(id):
 
         # Seta as novas informações
         equipamento.nome = form.nome.data
-        equipamento.precoAquisisao = form.preco.data
-        equipamento.dataFabricacao = converter_data_str_para_date(form.dataDeFabricacao.data)
-        equipamento.numeroDeSerie = form.numeroDeSerie.data
+        equipamento.preco_aquisisao = form.preco.data
+        equipamento.data_fabricacao = converter_data_str_para_date(form.data_de_fabricacao.data)
+        equipamento.numero_de_serie = form.numero_de_serie.data
         equipamento.fabricante = form.fabricante.data
 
         # Tenta adicionar ao banco de dados
@@ -104,7 +111,9 @@ def editar(id):
         return render_template('editarEquipamento.html', equipamento=equipamento, form=form, titulo=titulo)
 
 
-#Rota para excluir um equipamento
+"""
+    Rota para excluir um equipamento
+"""
 @EquipamentoView.route('/excluir/<int:id>', methods=['GET'])
 def excluir(id):
     # Procura pelo equipamento com a id passada na URL

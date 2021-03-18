@@ -6,6 +6,9 @@ app = create_app()
 
 titulo = "Gerenciador de Equipamento e Manutenções"
 
+"""
+    Pagina inicial
+"""
 @app.route('/')
 def index():
     return render_template('index.html', titulo=titulo)

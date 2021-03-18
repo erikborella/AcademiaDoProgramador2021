@@ -22,13 +22,15 @@ def index():
 
     dataHoje = date.today()
     for chamado in chamados:
-        dataDiferenca = dataHoje - chamado.dataDeAbertura
-        chamado.diasAberto = dataDiferenca.days
+        data_diferenca = dataHoje - chamado.data_de_abertura
+        chamado.dias_aberto = data_diferenca.days
 
     return render_template('chamados.html', chamados=chamados, titulo=titulo)
 
 
-# Pagina para registrar novos chamados
+"""
+    Pagina para registrar novos chamados
+"""
 @ChamadoView.route('/registrar', methods=['GET', 'POST'])
 def registrar():
     # Declaração do form para validar os inputs
@@ -40,10 +42,10 @@ def registrar():
     if request.method == 'POST':
        
         # Verifica se o equipamento existe
-        equipamentoParaChamada = Equipamento.query.filter(Equipamento.id == form.equipamento_id.data).first()
+        equipamento_para_chamada = Equipamento.query.filter(Equipamento.id == form.equipamento_id.data).first()
 
         # Caso não exista, coloqua uma mensagem no flash e recarregue a pagina
-        if equipamentoParaChamada is None:
+        if equipamento_para_chamada is None:
             flash("Equipamento não encontrado, selecione um valido!")
             return redirect(url_for('chamado.registrar'))
 
@@ -52,8 +54,8 @@ def registrar():
         chamado = ChamadoManutencao(
             form.titulo.data,
             form.descricao.data,
-            equipamentoParaChamada,
-            converter_data_str_para_date(form.dataDeAbertura.data)
+            equipamento_para_chamada,
+            converter_data_str_para_date(form.data_de_abertura.data)
         )
 
         # Tenta adicionar o chamado ao banco de dados
@@ -95,17 +97,17 @@ def editar(id):
     if request.method == 'POST' and  form.validate_on_submit():
 
         # Procura se o equipamento existe
-        equipamentoParaChamada = Equipamento.query.filter(Equipamento.id == form.equipamento_id.data).first()
+        equipamento_para_chamada = Equipamento.query.filter(Equipamento.id == form.equipamento_id.data).first()
         # Caso não, coloca uma mensagem no flash e recarrga a pagina
-        if equipamentoParaChamada is None:
+        if equipamento_para_chamada is None:
             flash("Equipamento não encontrado, selecione um valido!")
             return redirect(url_for('chamado.editar', id=id))
 
         # Define os novos valores do chamado
         chamado.titulo = form.titulo.data
         chamado.descricao = form.descricao.data
-        chamado.equipamento = equipamentoParaChamada
-        chamado.dataDeAbertura = converter_data_str_para_date(form.dataDeAbertura.data)
+        chamado.equipamento = equipamento_para_chamada
+        chamado.data_de_abertura = converter_data_str_para_date(form.data_de_abertura.data)
 
         # Tenta editar o chamado no banco de dados
         try:

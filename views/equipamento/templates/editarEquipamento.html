@@ -13,17 +13,17 @@
                     <label for="nome">Nome do Equipamento</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input id="preco" name="preco" type="number" step="0.01" required value="{{ equipamento.precoAquisisao }}">
+                    <input id="preco" name="preco" type="number" step="0.01" required value="{{ equipamento.preco_aquisisao }}">
                     <label for="preco">Preço de Aquisição</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <input id="numeroDeSerie" name="numeroDeSerie" type="text" required value="{{ equipamento.numeroDeSerie }}">
-                    <label for="numeroDeSerie">Numero De Serie</label>
+                    <input id="numero_de_serie" name="numero_de_serie" type="text" required value="{{ equipamento.numero_de_serie }}">
+                    <label for="numero_de_serie">Numero De Serie</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Data De Fabricação" name="dataDeFabricacao" id="dataDeFabricacao" class="datepicker" onfocus="openDatePicker()" required value="{{ equipamento.dataFabricacao.strftime('%d/%m/%Y') }}">
+                    <input placeholder="Data De Fabricação" name="data_de_fabricacao" id="data_de_fabricacao" class="datepicker" onfocus="openDatePicker()" required value="{{ equipamento.data_fabricacao.strftime('%d/%m/%Y') }}">
                 </div>
             </div>
 

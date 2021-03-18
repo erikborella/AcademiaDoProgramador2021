@@ -29,9 +29,9 @@
                     <div class="card-content white-text">
                         <span class="card-title">{{ equipamento.nome }}:</span>
                         <ul>
-                            <li>Numero de serie: {{ equipamento.numeroDeSerie }}</li>
-                            <li>Preço de Aquisição: {{ equipamento.precoAquisisao }}$</li>
-                            <li>Data de Fabricação: {{ equipamento.dataFabricacao.strftime("%d/%m/%Y") }}</li>
+                            <li>Numero de serie: {{ equipamento.numero_de_serie }}</li>
+                            <li>Preço de Aquisição: {{ equipamento.preco_aquisisao }}$</li>
+                            <li>Data de Fabricação: {{ equipamento.data_fabricacao.strftime("%d/%m/%Y") }}</li>
                             <li>Fabricante: {{ equipamento.fabricante }}</li>
                             {% if equipamento.chamados %} 
                                 <br>
@@ -59,8 +59,8 @@
             <div class="modal-content">
                 <h4>Chamado: {{ chamado.titulo }}</h4>
                 <p>Equipamento: {{ equipamento.nome }}</p>
-                <p>Data de Abertura: {{ chamado.dataDeAbertura.strftime('%d/%m/%Y') }}</p>
-                <p>Aberto há: {{ chamado.diasAberto }} dias</p>
+                <p>Data de Abertura: {{ chamado.data_de_abertura.strftime('%d/%m/%Y') }}</p>
+                <p>Aberto há: {{ chamado.dias_aberto }} dias</p>
                 <div class="divider"></div>
                 <p><strong>Decrição:</strong></p>
                 <p class="truncate">
