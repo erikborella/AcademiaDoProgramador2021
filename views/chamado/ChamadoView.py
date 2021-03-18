@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 
 from datetime import date, datetime, timedelta
 
-from Forms import ChamadoForm
+from forms import ChamadoForm
 from models import Equipamento, ChamadoManutencao
 
 from extensions import db
