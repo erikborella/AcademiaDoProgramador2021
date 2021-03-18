@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3 class="center-align">Editar Chamado</h3>
+        <div class="row">
+            <form action="{{ url_for('chamado.editar', id=chamado.id) }}" method="post" class="col s12">
+                {{ form.csrf_token }}
+
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <input id="titulo" name="titulo" type="text" required value="{{ chamado.titulo }}">
+                        <label for="nome">Titulo do Chamado</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <select name="equipamento_id" id="equipamento_id" required>
+                            {% for equipamento in equipamentos %}
+
+                                {% if equipamento.id == chamado.equipamento.id %}
+                                    <option value="{{ equipamento.id }}" selected>{{ equipamento.nome }}</option>
+                                {% else %}
+                                    <option value="{{ equipamento.id }}">{{ equipamento.nome }}</option>
+                                {% endif %}
+
+                            {% endfor %}
+                        </select>
+                        <label for="equipamento_id">Selecione o equipamento</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <input placeholder="Data De Abertura" name="dataDeAbertura" id="dataDeAbertura" class="datepicker" onfocus="openDatePicker()" required value="{{ chamado.dataDeAbertura.strftime('%d/%m/%Y') }}">
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <textarea id="descricao" name="descricao" class="materialize-textarea">{{ chamado.descricao }}</textarea>
+                        <label for="descricao">Decrição</label>
+                    </div>
+                </div>
+
+                <div class="row center-align">    
+                    <button class="btn waves-effect waves-light black" type="submit">Editar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/views/chamado/chamado.js') }}"></script>
+{% endblock %}

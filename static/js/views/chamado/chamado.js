@@ -10,8 +10,11 @@ const done = "Ok";
 
 // Inicialiação do Selector e do dataPicker
 document.addEventListener('DOMContentLoaded', function() {
-    var elemsSelected = document.querySelectorAll('select');
+    let elemsSelected = document.querySelectorAll('select');
     M.FormSelect.init(elemsSelected);
+
+    let modals = document.querySelectorAll('.modal');
+    M.Modal.init(modals);
 
     let elemsDatePicker = document.querySelectorAll('.datepicker');
     M.Datepicker.init(elemsDatePicker, 

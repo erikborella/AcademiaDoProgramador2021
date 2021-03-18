@@ -10,25 +10,64 @@
         </a>
     </div>
 
-    <div class="row">
+    {% if not chamados %}
+        <div class="center-align">
+            <div class="col s12 m6 offset-m3" style="padding-top: 30px;">
+                <div class="card red darken-2">
+                    <div class="card-content white-text">
+                        <span class="card-title">Cadastre um novo chamado apertando no botão abaixo!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row" style="padding-top: 10px;">
         {% for chamado in chamados %}
         <div class="col s12 m6">
             <div class="card black darken-3">
                 <div class="card-content white-text">
                     <span class="card-title">{{ chamado.titulo }}:</span>
                     <ul>
-                        <li>Equipamento: <a href="">{{ chamado.equipamento.nome }}</a></li>
+                        <li>Equipamento: <a class="modal-trigger" href="#modal{{ chamado.id }}">{{ chamado.equipamento.nome }}</a></li>
                         <li>Data de Abertura: {{ chamado.dataDeAbertura.strftime('%d/%m/%Y') }}</li>
                         <li>Aberto há: {{ chamado.diasAberto }} dias</li>
+                        <br>
+                        <li><strong>Decrição:</strong></li>
+                        <li class="truncate">
+                            {% autoescape false %} 
+                                {{ chamado.descricao | replace('\n', '<br>') }} 
+                            {% endautoescape %}
+                        </li>
                     </ul>
                 </div>
                 <div class="card-action">
-                    <a href="" >Editar</a>
+                    <a href="{{ url_for('chamado.editar', id=chamado.id) }}" >Editar</a>
                     <a href="{{ url_for('chamado.excluir', id=chamado.id) }}" class="red-text">Excluir</a>
                 </div>
             </div>
         </div>
         {% endfor %}    
     </div>
+
+    {% for chamado in chamados %}
+        <div id="modal{{ chamado.id }}" class="modal">
+            <div class="modal-content">
+                <h4>Equipamento do chamado: {{ chamado.titulo }}</h4>
+                <p>Nome: {{ chamado.equipamento.nome }}</p>
+                <p>Numero de Serie: {{ chamado.equipamento.numeroDeSerie }}</p>
+                <p>Preço de Aquisição: {{ chamado.equipamento.precoAquisisao }}$</p>
+                <p>Data De Fabricação: {{ chamado.equipamento.dataFabricacao.strftime('%d/%m/%Y') }}</p>
+                <p>Fabricante: {{ chamado.equipamento.fabricante }}</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+            </div>
+        </div>
+    {% endfor %}
         
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/views/chamado/chamado.js') }}"></script>
 {% endblock %}
