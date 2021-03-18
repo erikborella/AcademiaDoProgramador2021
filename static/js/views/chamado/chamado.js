@@ -8,14 +8,17 @@ const cancel = "Cancelar";
 const clear = "Limpar";
 const done = "Ok";
 
-// Inicialiação do Selector e do dataPicker
+// Inicialiação do Selector, dataPicker e modais
 document.addEventListener('DOMContentLoaded', function() {
+    // Inicializa os Selectors
     let elemsSelected = document.querySelectorAll('select');
     M.FormSelect.init(elemsSelected);
 
+    // Inicializa os Modais
     let modals = document.querySelectorAll('.modal');
     M.Modal.init(modals);
 
+    // // Inicializa o dataPicker
     let elemsDatePicker = document.querySelectorAll('.datepicker');
     M.Datepicker.init(elemsDatePicker, 
         {

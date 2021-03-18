@@ -8,13 +8,15 @@ const cancel = "Cancelar";
 const clear = "Limpar";
 const done = "Ok";
 
-// Inicialiação do dataPicker
+// Inicialiação do dataPicker e dos modais
 document.addEventListener('DOMContentLoaded', function() {
+    // // Inicializa os modais
     let modals = document.querySelectorAll('.modal');
     M.Modal.init(modals);
 
-    let elems = document.querySelectorAll('.datepicker');
-    let instances = M.Datepicker.init(elems, 
+    // Inicializa o dataPicker
+    let datePicker = document.querySelectorAll('.datepicker');
+    let instances = M.Datepicker.init(datePicker, 
         {
             "maxDate": new Date(),
             "format": "dd/mm/yyyy",
