@@ -65,3 +65,20 @@ def registrar():
 
     else:
         return render_template('registrarChamado.html', equipamentos=equipamentos, form=form, titulo=titulo)
+
+
+@ChamadoView.route('/excluir/<int:id>', methods=['GET'])
+def excluir(id):
+    chamado = ChamadoManutencao.query.filter(ChamadoManutencao.id == id).first()
+
+    if chamado is None:
+        flash("Chamado com o id: %r, não foi encontrado" % (id))
+        return redirect(url_for("chamado.index"))
+
+    try:
+        db.session.delete(chamado)
+        db.session.commit()
+    except:
+        flash("Não foi possivel excluir esse equipamento, um erro occoreu!")
+        
+    return redirect(url_for('chamado.index'))
