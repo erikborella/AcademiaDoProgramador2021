@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h4 class="text-align center">Bem vindo ao gerenciador de Equipamentos e Manutenções</h4>
+    <br>
+    <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+              <img height="100%" src="{{ url_for('static', filename='img/equipamentos-index.png') }}">
+              <span class="card-title black-text">Equipamentos</span>
+            </div>
+            <div class="card-content">
+              <p>Registre e gerencie os seus equipamentos!</p>
+            </div>
+            <div class="card-action black">
+              <a href="{{ url_for('equipamento.index') }}">Acessar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="card">
+              <div class="card-image">
+                <img src="{{ url_for('static', filename='img/manutencao-index.jpg') }}">
+                <span class="card-title black-text">Manutenções</span>
+              </div>
+              <div class="card-content">
+                <p>Registre o gerencie as chamadas de manutenção para os seus equipamentos!</p>
+              </div>
+              <div class="card-action black">
+                <a href="{{ url_for('chamado.index') }}">Acessar</a>
+              </div>
+            </div>
+          </div>
+      </div>
+{% endblock %}
