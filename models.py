@@ -34,7 +34,7 @@ class ChamadoManutencao(db.Model):
     descricao = db.Column(db.String(500), nullable=False)
 
     equipamento_id = db.Column(db.String(100), db.ForeignKey('equipamento.id'), nullable=False)
-    equipamento = db.relationship('Equipamento', backref=db.backref('chamadas', lazy=True))
+    equipamento = db.relationship('Equipamento', backref=db.backref('chamados', lazy=True))
 
     dataDeAbertura = db.Column(db.Date, nullable=False)
 

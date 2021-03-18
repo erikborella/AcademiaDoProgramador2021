@@ -117,6 +117,10 @@ def excluir(id):
 
     # Tente deletar o equipamento do banco de dados
     try:
+        # Deleta todos os chamados vinculados a esse equipamento antes
+        for chamado in equipamento.chamados:
+            db.session.delete(chamado)
+
         db.session.delete(equipamento)
         db.session.commit()
     except:
