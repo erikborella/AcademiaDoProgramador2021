@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h3 class="center-align">Chamados de Manutenção</h3>
+    
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light black" href="{{ url_for('chamado.registrar') }}">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+
+    <div class="row">
+        {% for chamado in chamados %}
+        <div class="col s12 m6">
+            <div class="card black darken-3">
+                <div class="card-content white-text">
+                    <span class="card-title">{{ chamado.titulo }}:</span>
+                    <ul>
+                        <li>Equipamento: <a href="">{{ chamado.equipamento.nome }}</a></li>
+                        <li>Data de Abertura: {{ chamado.dataDeAbertura.strftime('%d/%m/%Y') }}</li>
+                        <li>Aberto há: {{ chamado.diasAberto }} dias</li>
+                    </ul>
+                </div>
+                <div class="card-action">
+                    <a href="" >Editar</a>
+                    <a href="" class="red-text">Excluir</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}    
+    </div>
+        
+{% endblock %}
