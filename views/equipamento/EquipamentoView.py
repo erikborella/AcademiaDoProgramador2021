@@ -27,6 +27,7 @@ def getDate(dataStr: str) -> date:
 def index():
     equipamentos = Equipamento.query.all()
     
+    # Calcula há quantos dias os chamados de cada equipamento estão abertos
     for equipamento in equipamentos:
         for chamado in equipamento.chamados:
             chamado.diasAberto = calcular_diferença_dias_data_atual(chamado.dataDeAbertura)
