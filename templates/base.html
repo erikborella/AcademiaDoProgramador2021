@@ -11,15 +11,24 @@
 
       <nav>
         <div class="nav-wrapper black">
-          <a href="#" class="brand-logo truncate">{{ titulo }}</a>
+
+          {% if titulo == 'Equipamento' %}
+            <a href="{{ url_for('equipamento.index') }}" class="brand-logo truncate">{{ titulo }}</a>
+          {% endif %}
+          {% if titulo == 'Manutenções' %}
+            <a href="{{ url_for('chamado.index') }}" class="brand-logo truncate">{{ titulo }}</a>
+          {% endif %}
+
           <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
+
             {% if titulo != 'Equipamento' %}
               <li><a href="{{ url_for('equipamento.index') }}">Equipamentos</a></li>
             {% endif %}
-            {% if titulo != 'Chamados de Manutenção' %}
+            {% if titulo != 'Manutenções' %}
               <li><a href="{{ url_for('chamado.index') }}">Chamados</a></li>
             {% endif %}
+
           </ul>
         </div>
       </nav>
@@ -43,10 +52,14 @@
       </div>
 
       <ul class="sidenav" id="mobile-menu">
+        <li>
+          <div class="user-view">
+          </div>
+        </li>
         {% if titulo != 'Equipamento' %}
-          <li><a href="{{ url_for('equipamento.index') }}">Equipamentos</a></li>
+        <li><a href="{{ url_for('equipamento.index') }}">Equipamentos</a></li>
         {% endif %}
-        {% if titulo != 'Chamados de Manutenção' %}
+        {% if titulo != 'Manutenções' %}
           <li><a href="{{ url_for('chamado.index') }}">Chamados</a></li>
         {% endif %}
       </ul>    
