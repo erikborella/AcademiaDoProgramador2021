@@ -11,7 +11,16 @@
 
       <nav>
         <div class="nav-wrapper black">
-          <a href="#" class="brand-logo">{{ titulo }}</a>
+          <a href="#" class="brand-logo truncate">{{ titulo }}</a>
+          <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {% if titulo != 'Equipamento' %}
+              <li><a href="{{ url_for('equipamento.index') }}">Equipamentos</a></li>
+            {% endif %}
+            {% if titulo != 'Chamados de Manutenção' %}
+              <li><a href="{{ url_for('chamado.index') }}">Chamados</a></li>
+            {% endif %}
+          </ul>
         </div>
       </nav>
 
@@ -33,7 +42,17 @@
 
       </div>
 
+      <ul class="sidenav" id="mobile-menu">
+        {% if titulo != 'Equipamento' %}
+          <li><a href="{{ url_for('equipamento.index') }}">Equipamentos</a></li>
+        {% endif %}
+        {% if titulo != 'Chamados de Manutenção' %}
+          <li><a href="{{ url_for('chamado.index') }}">Chamados</a></li>
+        {% endif %}
+      </ul>    
+
       <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
       {% block scripts %}{% endblock %}
     </body>
   </html>
