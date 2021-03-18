@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 
 from datetime import date, datetime, timedelta
 
+from utils import converter_data_str_para_date
+
 from forms import ChamadoForm
 from models import Equipamento, ChamadoManutencao
 
@@ -9,15 +11,6 @@ from extensions import db
 
 ChamadoView = Blueprint('chamado', __name__, template_folder='templates')
 titulo = "Manutenções"
-
-# Recebe uma string no formato dd/mm/yyyy e retorna um objeto date com a data
-def getDate(dataStr: str) -> date:
-    datasSeparadas = dataStr.split('/')
-    return date(
-        int(datasSeparadas[2]), 
-        int(datasSeparadas[1]), 
-        int(datasSeparadas[0])
-        )
 
 
 """
@@ -60,7 +53,7 @@ def registrar():
             form.titulo.data,
             form.descricao.data,
             equipamentoParaChamada,
-            getDate(form.dataDeAbertura.data)
+            converter_data_str_para_date(form.dataDeAbertura.data)
         )
 
         # Tenta adicionar o chamado ao banco de dados
@@ -112,7 +105,7 @@ def editar(id):
         chamado.titulo = form.titulo.data
         chamado.descricao = form.descricao.data
         chamado.equipamento = equipamentoParaChamada
-        chamado.dataDeAbertura = getDate(form.dataDeAbertura.data)
+        chamado.dataDeAbertura = converter_data_str_para_date(form.dataDeAbertura.data)
 
         # Tenta editar o chamado no banco de dados
         try:

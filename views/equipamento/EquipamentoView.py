@@ -7,20 +7,12 @@ from models import Equipamento
 
 from datetime import date
 
-from utils import calcular_diferença_dias_data_atual
+from utils import calcular_diferença_dias_data_atual, converter_data_str_para_date
 
 # Declaração do Blueprint e do seu titulo
 EquipamentoView = Blueprint('equipamento', __name__, template_folder='templates')
 titulo = "Equipamento"
 
-# Recebe uma string no formato dd/mm/yyyy e retorna um objeto date com a data
-def getDate(dataStr: str) -> date:
-    datasSeparadas = dataStr.split('/')
-    return date(
-        int(datasSeparadas[2]), 
-        int(datasSeparadas[1]), 
-        int(datasSeparadas[0])
-        )
 
 # Pagina inicial
 @EquipamentoView.route('/')
@@ -50,7 +42,7 @@ def registrar():
             form.nome.data,
             form.numeroDeSerie.data,
             form.preco.data,
-            getDate(form.dataDeFabricacao.data),
+            converter_data_str_para_date(form.dataDeFabricacao.data),
             form.fabricante.data
         )
 
@@ -91,7 +83,7 @@ def editar(id):
         # Seta as novas informações
         equipamento.nome = form.nome.data
         equipamento.precoAquisisao = form.preco.data
-        equipamento.dataFabricacao = getDate(form.dataDeFabricacao.data)
+        equipamento.dataFabricacao = converter_data_str_para_date(form.dataDeFabricacao.data)
         equipamento.numeroDeSerie = form.numeroDeSerie.data
         equipamento.fabricante = form.fabricante.data
 
