@@ -61,6 +61,7 @@
                 <p>Fabricante: {{ chamado.equipamento.fabricante }}</p>
             </div>
             <div class="modal-footer">
+                <a href="{{ url_for('equipamento.editar', id=chamado.equipamento.id) }}" class="left red-text waves-effect waves-green btn-flat">Editar Equipamento</a>
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
             </div>
         </div>
