@@ -2,6 +2,15 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, FloatField, IntegerField
 from wtforms.validators import DataRequired, Length
 
+"""
+    Declaramos aqui quais dados são necessarios nos formulario
+    E automaticamente os valida
+"""
+
+
+"""
+    Formulario para os equipamentos
+"""
 class EquipamentoForm(FlaskForm):
 
     nome = StringField('nome', validators=[DataRequired(), Length(min=6)])
@@ -11,6 +20,9 @@ class EquipamentoForm(FlaskForm):
     fabricante = StringField('fabricante', validators=[DataRequired()])
 
 
+"""
+    Formulario para os chamados
+"""
 class ChamadoForm(FlaskForm):
 
     titulo = StringField('titulo', validators=[DataRequired()])
