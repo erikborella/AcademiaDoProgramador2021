@@ -3,7 +3,7 @@
   <h3 align="center">Gerenciador de Equipamentos e Manutenções</h3>
 
   <p align="center">
-    Academia do Programadores 2021
+    Academia do Programador 2021
     <br />
   </p>
 </p>
@@ -85,7 +85,7 @@ Linguagens de programação usadas e suas bibliotecas:
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
     - [Materialize](https://materializecss.com/)
 
-E como Banco de Dados
+E como Banco de Dados:
 - [SQLite](https://www.sqlite.org/index.html)
 
 ### Recursos
