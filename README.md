@@ -282,16 +282,16 @@ O Bando de Dados é composto por duas tabelas:
 ## Rotas
 
 ### Pagina Inicial
-  - /
+  - `/`
     - get:
       - Mostra a Pagina Inicial
 
 ### Equipamento
-  - /equipamentos/
+  - `/equipamentos/`
     - get:
       - Mostra a tela dos equipamentos
 
-  - /equipamentos/registrar
+  - `/equipamentos/registrar`
     - get:
       - Mostra a tela para registrar um Equipamento
     - post:
@@ -326,11 +326,11 @@ O Bando de Dados é composto por duas tabelas:
       - Exclui o Equipamento com o id passado na url junto com todos os Chamados relacionados a ele
 
 ### Chamado Manutenção
-  - /chamados/
+  - `/chamados/`
     - get:
       - Mostra todos os Chamados de Manutenção Cadastrados
 
-  - /chamados/registrar/
+  - `/chamados/registrar/`
     - get:
       - Mostra a tela para registro de um novo Chamado de Manutenção
     - post:
