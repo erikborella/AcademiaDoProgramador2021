@@ -41,6 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Essa função quando chamada abre o dataPicker
 // Necessaria para ser utiliada com o onFocus
 function openDatePicker() {
-    let elem = document.getElementById("dataDeAbertura");
+    let elem = document.getElementById("data_de_abertura");
     M.Datepicker.getInstance(elem).open();
 }
