@@ -5,6 +5,7 @@
     <h3 class="center-align">Registrar Equipamento</h3>
 
     <div class="row">
+        <!-- Formulario para registrar um Equipamento -->
         <form action="{{ url_for('equipamento.registrar') }}" method="post" class="col s12">
             {{ form.csrf_token }}
             <div class="row">

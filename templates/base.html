@@ -1,3 +1,5 @@
+<!-- Este template serve como base para todos os outros, permitindo assim uma boa padronização -->
+
 <!DOCTYPE html>
   <html>
     <head>
@@ -9,6 +11,7 @@
 
     <body>
 
+      <!-- Navbar com botões de navegação -->
       <nav>
         <div class="nav-wrapper black">
 
@@ -36,8 +39,10 @@
 
       <div class="container">
 
+        <!-- Aqui entra o conteudo das outras paginas -->
         {% block content %}{% endblock %}
 
+        <!-- Mostra as mensagens flash -->
         <div>
           {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -52,6 +57,7 @@
 
       </div>
 
+      <!-- Sidenav para navegação no mobile -->
       <ul class="sidenav" id="mobile-menu">
         <li>
           <div class="user-view">
@@ -65,8 +71,10 @@
         {% endif %}
       </ul>    
 
+      <!-- Scrips js -->
       <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
       <script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
+      <!-- Aqui vai os scripts das outras paginas -->
       {% block scripts %}{% endblock %}
     </body>
   </html>

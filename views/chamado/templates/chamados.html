@@ -10,6 +10,7 @@
         </a>
     </div>
 
+    <!-- Mostra uma mensagem caso não tenha nenhum chamado cadastrado -->
     {% if not chamados %}
         <div class="center-align">
             <div class="col s12 m6 offset-m3" style="padding-top: 30px;">
@@ -23,6 +24,7 @@
     {% endif %}
 
     <div class="row" style="padding-top: 10px;">
+        <!-- Percorre por todos os chamados e constroi eles -->
         {% for chamado in chamados %}
         <div class="col s12 m6">
             <div class="card black darken-3">
@@ -50,6 +52,7 @@
         {% endfor %}    
     </div>
 
+    <!-- Constroi os modais para ver os Equipamentos relacionados -->
     {% for chamado in chamados %}
         <div id="modal{{ chamado.id }}" class="modal">
             <div class="modal-content">

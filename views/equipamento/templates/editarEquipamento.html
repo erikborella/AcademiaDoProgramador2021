@@ -5,6 +5,7 @@
     <h3 class="center-align">Editar Equipamento</h3>
 
     <div class="row">
+        <!-- Formulario para editar um Equipamento -->
         <form action="{{ url_for('equipamento.editar', id=equipamento.id) }}" method="post" class="col s12">
             {{ form.csrf_token }}
             <div class="row">

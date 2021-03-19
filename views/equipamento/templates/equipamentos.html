@@ -10,6 +10,7 @@
         </a>
     </div>
 
+    <!-- Mostra uma mensagem caso não tenha nenhum Equipamento -->
     {% if not equipamentos %}
         <div class="center-align">
             <div class="col s12 m6 offset-m3" style="padding-top: 30px;">
@@ -23,6 +24,7 @@
     {% endif %}
 
     <div class="row" style="padding-top: 10px;">
+        <!-- Constroi todos os card de Equipamento -->
         {% for equipamento in equipamentos %}
             <div class="col s12 m6">
                 <div class="card black darken-3">
@@ -55,6 +57,7 @@
         {% endfor %}
     </div>
 
+    <!-- Constroi os modais dos Chamados de cada Equipametno -->
     {% for equipamento in equipamentos %}
         {% for chamado in equipamento.chamados %}
             <div id="modal{{ equipamento.id }}-{{ chamado.id }}" class="modal">
