@@ -8,11 +8,15 @@ const cancel = "Cancelar";
 const clear = "Limpar";
 const done = "Ok";
 
-// Inicialiação do dataPicker e dos modais
+// Inicialiação do dataPicker, dos modais e dos tooltips
 document.addEventListener('DOMContentLoaded', function() {
-    // // Inicializa os modais
+    // Inicializa os modais
     let modals = document.querySelectorAll('.modal');
     M.Modal.init(modals);
+
+    // Inicializa os tooltips
+    let tooltips = document.querySelectorAll('.tooltipped')
+    M.Tooltip.init(tooltips)
 
     // Inicializa o dataPicker
     let datePicker = document.querySelectorAll('.datepicker');

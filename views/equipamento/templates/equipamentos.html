@@ -46,7 +46,9 @@
                     </div>
                     <div class="card-action">
                     <a href="{{ url_for('equipamento.editar', id=equipamento.id) }}" >Editar</a>
-                    <a href="{{ url_for('equipamento.excluir', id=equipamento.id) }}" class="red-text">Excluir</a>
+                    <a href="{{ url_for('equipamento.excluir', id=equipamento.id) }}" class="red-text tooltipped" data-position="bottom" 
+                        data-tooltip="Excluir um equipamento irá também excluir todos os chamados de manutenção vinculado a ele!">
+                        Excluir</a>
                     </div>
                 </div>
             </div>
