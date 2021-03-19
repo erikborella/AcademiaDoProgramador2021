@@ -63,7 +63,6 @@ def registrar():
         return redirect(url_for('equipamento.index'))
 
     else:
-        print(form.errors)
         # Renderiza a pagina para registro
         return render_template('registrarEquipamento.html', form=form, titulo=titulo)
 
